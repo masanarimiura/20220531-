@@ -1,0 +1,19 @@
+<?php
+
+// DBクラスの内容を記載、レイアウトの利用の項目
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+// DBにアクセスしてDBクラスを使えるようにしてる
+
+class AuthorController extends Controller
+{
+    public function index()
+    {
+        $items = DB::select('select * from authors');
+        // DB::select('MySQLのコマンド')で、データベース内でMySQLのコマンドを使えるようにしてる。
+        return view('index', ['items' => $items]);
+        // $items の内容を index.blade.php に送っている。
+    }
+}
